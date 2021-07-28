@@ -55,7 +55,14 @@ const forecast = (latitude, longitude, callback) => {
             callback('Unable to find location');
          }
          else {
-             callback(undefined, body.current.weather_descriptions[0] + ". It is currently " + body.current.temperature + " out. It feels like " + body.current.feelslike + " degrees out.")
+            var _msg = "";
+            _msg += body.current.weather_descriptions[0] + ". ";
+            _msg += "It is currently " + body.current.temperature + " out. ";
+            _msg += "It feels like "   + body.current.feelslike   + " degrees out.";
+            _msg += "Humidity is "     + body.current.humidity;
+            callback(undefined, _msg)
+            
+            //callback(undefined, body.current.weather_descriptions[0] + ". It is currently " + body.current.temperature + " out. It feels like " + body.current.feelslike + " degrees out.")
          }
     })
 }
